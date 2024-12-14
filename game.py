@@ -5,10 +5,12 @@ from nltk.corpus import words
 import time
 
 #guess sequence 
-def guess_sequence(): 
+def guess_sequence(letter_guesses): 
     guess = input(("Guess a letter: "))
     while len(guess) != 1:
         guess = input(("Please enter a single letter: "))
+    while guess in letter_guesses:
+        guess = input(("You've already guessed that letter: "))
     return guess
 
 #guessing correctly sequence
@@ -26,7 +28,7 @@ def main():
     word = random.choice(list_of_words)
 
     #im a cheater
-    print(word)
+    #print(word)
 
     #rules 
     input("Press enter to flip through the rules")
@@ -36,7 +38,7 @@ def main():
     input()
     print("You get 6 mistakes before the man is, well, fully drawn", end='')
     input()
-    print("Anyways good luck", end='')
+    print("Anyways good luck!", end='')
     input()
 
         #stage iterations 
@@ -101,12 +103,14 @@ def main():
         current = current + " "
     incorrect = 0
     myguess = ""
+    letter_guesses = []
 
     #game loop
     while incorrect <= 6:
         print(man[incorrect])
         print(current)
-        guess = guess_sequence()
+        guess = guess_sequence(letter_guesses)
+        letter_guesses.append(guess)
         if guess in word: 
             print(random.choice(correct_messages))
             time.sleep(1)
@@ -122,6 +126,7 @@ def main():
         if incorrect == 6:
             print("I'm so sorry for your loss, better luck next time")
             print("The word was " + word)
+            break 
 
 if __name__ == "__main__": 
     main()

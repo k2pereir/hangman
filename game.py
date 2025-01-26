@@ -28,7 +28,7 @@ def main():
     word = random.choice(list_of_words)
 
     #im a cheater
-    #print(word)
+    print(word)
 
     #rules 
     input("Press enter to flip through the rules")
@@ -41,7 +41,7 @@ def main():
     print("Anyways good luck!", end='')
     input()
 
-        #stage iterations 
+    #stage iterations 
     man = ['''
     *---*
     |   |
